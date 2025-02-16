@@ -1,0 +1,70 @@
+<div class="h-full flex flex-col gap-y-2 py-1 text-customTextLighter1">
+  <h1 class="text-sm font-semibold">{{ title }}</h1>
+  <table>
+    <thead>
+      <tr class="text-left">
+        <th
+          class="border border-customTextLighter6 font-semibold text-sm p-1.5"
+        >
+          <hlm-checkbox
+            [(ngModel)]="isGlobalChecked"
+            class="border-customTextLighter4"
+            (changed)="changeGlobalCheckHandler()"
+          />
+        </th>
+        <th
+          class="border border-customTextLighter6 font-semibold text-sm py-1.5 px-2.5"
+        >
+          Key
+        </th>
+        <th
+          class="border border-customTextLighter6 font-semibold text-sm p-1.5 py-1.5 px-2.5"
+        >
+          Value
+        </th>
+        <th
+          class="border border-customTextLighter6 font-semibold text-sm py-1.5 px-2.5"
+        >
+          Delete
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of data; track $index) {
+      <tr class="text-left">
+        <td class="border border-customTextLighter6 text-sm p-1.5">
+          <hlm-checkbox
+            class="border-customTextLighter4"
+            [(ngModel)]="item.checked"
+            (changed)="changeLocalCheckHandler(item)"
+          />
+        </td>
+        <td class="border border-customTextLighter6 text-sm p-0.5">
+          <input
+            class="w-full h-full border-0 font-semibold text-md text-customTextLighter1 bg-customBackground focus:bg-customTextLighter6 ring-0 outline-none px-2 py-1 rounded-md"
+            [(ngModel)]="item.key"
+            placeholder="key"
+            (input)="updateParamHeaderItem(item, $index)"
+          />
+        </td>
+        <td class="border border-customTextLighter6 text-sm p-0.5">
+          <input
+            class="w-full h-full border-0 font-semibold text-md text-customTextLighter1 bg-customBackground focus:bg-customTextLighter6 ring-0 outline-none px-2 py-1 rounded-md"
+            [(ngModel)]="item.value"
+            placeholder="value"
+            (input)="updateParamHeaderItem(item, $index)"
+          />
+        </td>
+        <td class="border border-customTextLighter6 text-sm py-1.5 px-2.5">
+          <ng-icon
+            name="lucideTrash2"
+            class="cursor-pointer"
+            (click)="removeParamHeaderItem($index)"
+          />
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  ​
+</div>

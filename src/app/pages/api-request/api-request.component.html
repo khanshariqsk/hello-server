@@ -1,0 +1,104 @@
+<div class="h-full w-full bg-customBackground flex flex-col">
+  <div class="h-1/2 p-4">
+    <div class="h-[12%] flex gap-x-2">
+      <div
+        class="border border-customPrimary rounded-md flex-1 flex items-center h-full"
+      >
+        <div
+          class="w-[13%] px-4 rounded-l-lg flex items-center border-r border-customSecondaryBackground"
+          [brnMenuTriggerFor]="requestDropdown"
+        >
+          <p
+            class="text-md font-semibold w-[80%]"
+            [ngStyle]="{ color: currentRequestTypeObj.color }"
+          >
+            {{ currentRequestTypeObj.method }}
+          </p>
+          <p class="flex items-center w-[20%]">
+            <ng-icon name="lucideChevronDown" />
+          </p>
+
+          <ng-template #requestDropdown>
+            <hlm-menu class="mt-3 w-full">
+              @for (requestTypeObj of requestTypesObj; track
+              requestTypeObj.method) {
+              <button
+                hlmMenuItem
+                [ngClass]="{
+                  'bg-customTextLighter6':
+                    requestTypeObj.method === currentRequestTypeObj.method
+                }"
+                class="cursor-pointer"
+                (click)="updateRequestType(requestTypeObj)"
+              >
+                <span
+                  class="font-medium"
+                  [ngStyle]="{ color: requestTypeObj.color }"
+                  >{{ requestTypeObj.method }}</span
+                >
+              </button>
+              }
+            </hlm-menu>
+          </ng-template>
+        </div>
+
+        <div class="w-[87%] rounded-r-lg h-full flex items-center">
+          <input
+            class="w-full h-full border-0 font-semibold text-md text-customTextLighter1"
+            hlmInput
+            placeholder="Enter URL or paste text"
+            type="text"
+            [(ngModel)]="urlInputValue"
+            (input)="onUrlChange()"
+          />
+        </div>
+      </div>
+      <button
+        hlmBtn
+        class="h-full rounded-md px-8 bg-customPrimary hover:bg-customSecondaryBackground font-bold"
+      >
+        Send
+      </button>
+    </div>
+    <div class="h-[13%] w-full flex items-center gap-x-6 py-1">
+      @for (tabItem of tabData; track tabItem.name) {
+      <div
+        class="flex h-full justify-center items-center px-1 cursor-pointer border-b-2"
+        [ngClass]="{
+          'border-customPrimary': tabItem.active,
+          'border-customBackground': !tabItem.active,
+        }"
+        (click)="handleTabChange(tabItem.name)"
+      >
+        <p class="text-customTextLighter1 text-sm tracking-wide font-normal">
+          {{ tabItem.name }}
+
+          @if (tabItem.count) {
+          <span class="text-customSuccess">({{ tabItem.count }})</span>
+          }
+        </p>
+      </div>
+      }
+    </div>
+
+    <div class="h-[75%] flex flex-col gap-y-2 py-1 text-customTextLighter1">
+      @if(activeTabItem.name === 'Params'){
+      <app-urls-params-header-table
+        [data]="paramsData"
+        [title]="'Query Params'"
+        (dataChange)="updateParamData($event)"
+        [type]="'param'"
+      ></app-urls-params-header-table>
+      }@else if(activeTabItem.name === 'Headers') {
+      <app-urls-params-header-table
+        [data]="headersData"
+        [title]="'Headers'"
+        (dataChange)="updateHeaderData($event)"
+        [type]="'header'"
+      ></app-urls-params-header-table>
+      }
+    </div>
+  </div>
+
+  <div class="h-1/2 border"></div>
+</div>
