@@ -18,6 +18,9 @@ module.exports = {
         customTextLighter5: "#cccccc", // Almost light gray
         customTextLighter6: "#dcdcdc", // Almost light gray
       },
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],

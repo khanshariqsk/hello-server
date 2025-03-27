@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "strict": true,
+    "jsx": "react-jsx",
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -16,27 +17,15 @@
     "target": "ES2022",
     "module": "ES2022",
     "paths": {
-      "@spartan-ng/ui-button-helm": [
-        ".\\libs/ui/ui-button-helm/src/index.ts"
-      ],
-      "@spartan-ng/ui-menu-helm": [
-        ".\\libs/ui/ui-menu-helm/src/index.ts"
-      ],
-      "@spartan-ng/ui-icon-helm": [
-        ".\\libs/ui/ui-icon-helm/src/index.ts"
-      ],
-      "@spartan-ng/ui-input-helm": [
-        ".\\libs/ui/ui-input-helm/src/index.ts"
-      ],
+      "@spartan-ng/ui-button-helm": [".\\libs/ui/ui-button-helm/src/index.ts"],
+      "@spartan-ng/ui-menu-helm": [".\\libs/ui/ui-menu-helm/src/index.ts"],
+      "@spartan-ng/ui-icon-helm": [".\\libs/ui/ui-icon-helm/src/index.ts"],
+      "@spartan-ng/ui-input-helm": [".\\libs/ui/ui-input-helm/src/index.ts"],
       "@spartan-ng/ui-formfield-helm": [
         ".\\libs/ui/ui-formfield-helm/src/index.ts"
       ],
-      "@spartan-ng/ui-tabs-helm": [
-        ".\\libs/ui/ui-tabs-helm/src/index.ts"
-      ],
-      "@spartan-ng/ui-table-helm": [
-        ".\\libs/ui/ui-table-helm/src/index.ts"
-      ],
+      "@spartan-ng/ui-tabs-helm": [".\\libs/ui/ui-tabs-helm/src/index.ts"],
+      "@spartan-ng/ui-table-helm": [".\\libs/ui/ui-table-helm/src/index.ts"],
       "@spartan-ng/ui-checkbox-helm": [
         ".\\libs/ui/ui-checkbox-helm/src/index.ts"
       ]

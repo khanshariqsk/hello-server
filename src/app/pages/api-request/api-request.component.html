@@ -96,6 +96,12 @@
         (dataChange)="updateHeaderData($event)"
         [type]="'header'"
       ></app-urls-params-header-table>
+      }@else if(activeTabItem.name === 'Body') {
+      <div
+        class="h-full w-full px-2 border border-customTextLighter5 rounded-md"
+      >
+        <editor></editor>
+      </div>
       }
     </div>
   </div>

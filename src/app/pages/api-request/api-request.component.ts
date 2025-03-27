@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { UrlsParamsHeaderTableComponent } from '../../components/urls-params-header-table/urls-params-header-table.component';
+import { EditorComponent } from '../../components/editor/editor.component';
 
 type RequestType =
   | 'GET'
@@ -64,6 +65,7 @@ export interface EmitData {
     HlmInputDirective,
     FormsModule,
     UrlsParamsHeaderTableComponent,
+    EditorComponent,
   ],
   providers: [provideIcons({ lucideChevronDown, lucideTrash2 })],
   templateUrl: './api-request.component.html',
@@ -80,9 +82,9 @@ export class ApiRequestComponent {
   ];
 
   tabData: Tab[] = [
-    { name: 'Params', count: 0, active: true },
+    { name: 'Params', count: 0, active: false },
     { name: 'Headers', count: 0, active: false },
-    { name: 'Body', count: 0, active: false },
+    { name: 'Body', count: 0, active: true },
   ];
 
   paramsData: RequestParamsHeader[] = [{ key: '', value: '', checked: false }];
@@ -93,7 +95,7 @@ export class ApiRequestComponent {
 
   urlInputValue: string = 'http://localhost:4200/api-request';
 
-  activeTabItem: Tab = this.tabData[0];
+  activeTabItem: Tab = this.tabData[2];
 
   updateRequestType(requestTypeObj: RequestTypeObj): void {
     this.currentRequestTypeObj = requestTypeObj;
